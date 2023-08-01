@@ -79,7 +79,80 @@ target("59_02_QueueWithMax")
 target("67_StringToInt")
     set_kind("binary")
     add_files("src/67_*/*.cpp")
-    -- set_default(false)
+    set_default(false)
+    set_filename("out")
+
+
+
+-- 02. 动态规划
+
+target("10_01_Fibonacci")
+    set_kind("binary")
+    add_files("src/10_01_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("10_02_FrogJumpStairs")
+    set_kind("binary")
+    add_files("src/10_02_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("19_RegularExpressionsMatching")
+    set_kind("binary")
+    add_files("src/19_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("42_GreatestSumOfSubarrays")
+    set_kind("binary")
+    add_files("src/42_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("46_GreatestSumOfSubarrays")
+    set_kind("binary")
+    add_files("src/46_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("47_MaxValueOfGifts")
+    set_kind("binary")
+    add_files("src/47_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("48_LongestSubstringWithoutDup")
+    set_kind("binary")
+    add_files("src/48_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("49_UglyNumber")
+    set_kind("binary")
+    add_files("src/49_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("60_DicesProbability")
+    set_kind("binary")
+    add_files("src/60_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("63_MaximalProfit")
+    set_kind("binary")
+    add_files("src/63_*/*.cpp")
+    set_default(false)
     set_filename("out")
 
 

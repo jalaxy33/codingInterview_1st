@@ -6,16 +6,26 @@ target("demo")
     set_default(false)
     set_filename("out")
 
+-- 工具函数库
+
+target("utils")
+    set_kind("static")
+    add_files("src/Utilities/**.cpp")
+    add_headerfiles("src/Utilities/**.h")
+
+
 
 -- 01. 数据结构
 target("05_ReplaceSpaces")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/05_*/*.cpp")
     set_default(false)
     set_filename("out")
 
 target("06_PrintListInReversedOrder")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/06_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -23,6 +33,7 @@ target("06_PrintListInReversedOrder")
 
 target("09_QueueWithTwoStacks")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/09_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -30,6 +41,7 @@ target("09_QueueWithTwoStacks")
 
 target("20_NumericStrings")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/20_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -44,12 +56,14 @@ target("24_ReverseList")
 
 target("30_MinInStack")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/30_*/*.cpp")
     set_default(false)
     set_filename("out")
 
 target("35_CopyComplexList")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/35_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -57,6 +71,7 @@ target("35_CopyComplexList")
 
 target("58_02_LeftRotateString")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/58_02_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -64,6 +79,7 @@ target("58_02_LeftRotateString")
 
 target("59_01_MaxInSlidingWindow")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/59_01_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -71,6 +87,7 @@ target("59_01_MaxInSlidingWindow")
 
 target("59_02_QueueWithMax")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/59_02_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -78,6 +95,7 @@ target("59_02_QueueWithMax")
 
 target("67_StringToInt")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/67_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -88,6 +106,7 @@ target("67_StringToInt")
 
 target("10_01_Fibonacci")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/10_01_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -95,6 +114,7 @@ target("10_01_Fibonacci")
 
 target("10_02_FrogJumpStairs")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/10_02_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -102,6 +122,7 @@ target("10_02_FrogJumpStairs")
 
 target("19_RegularExpressionsMatching")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/19_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -109,6 +130,7 @@ target("19_RegularExpressionsMatching")
 
 target("42_GreatestSumOfSubarrays")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/42_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -116,6 +138,7 @@ target("42_GreatestSumOfSubarrays")
 
 target("46_GreatestSumOfSubarrays")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/46_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -123,6 +146,7 @@ target("46_GreatestSumOfSubarrays")
 
 target("47_MaxValueOfGifts")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/47_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -130,6 +154,7 @@ target("47_MaxValueOfGifts")
 
 target("48_LongestSubstringWithoutDup")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/48_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -137,6 +162,7 @@ target("48_LongestSubstringWithoutDup")
 
 target("49_UglyNumber")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/49_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -144,6 +170,7 @@ target("49_UglyNumber")
 
 target("60_DicesProbability")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/60_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -151,16 +178,156 @@ target("60_DicesProbability")
 
 target("63_MaximalProfit")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/63_*/*.cpp")
     set_default(false)
     set_filename("out")
 
 
+-- 03. 搜索与回溯
 
-add_files("src/Utilities/**.cpp")
-add_headerfiles("src/Utilities/**.h")
+target("12_StringPathInMatrix")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/12_*/*.cpp")
+    set_default(false)
+    set_filename("out")
 
 
+target("13_RobotMove")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/13_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("26_SubstructureInTree")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/26_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("27_MirrorOfBinaryTree")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/27_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("28_SymmetricalBinaryTree")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/28_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("32_01_PrintTreeFromTopToBottom")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/32_01_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("32_02_PrintTreesInLines")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/32_02_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("32_03_PrintTreesInZigzag")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/32_03_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("34_PathInTree")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/34_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("36_ConvertBinarySearchTree")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/36_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("37_SerializeBinaryTrees")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/37_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("38_StringPermutation")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/38_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("54_KthNodeInBST")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/54_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("55_01_TreeDepth")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/55_01_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("55_02_BalancedBinaryTree")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/55_02_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("64_Accumulate")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/64_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("68_01_CommonParentInSearchTree")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/68_01_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("68_02_CommonParentInBinaryTree")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/68_02_*/*.cpp")
+    set_default(false)
+    set_filename("out")
 
 
 --

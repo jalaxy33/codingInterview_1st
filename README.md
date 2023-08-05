@@ -25,7 +25,7 @@ xmake f -m debug [--toolchain=gcc]
 xmake -w
 
 # 运行
-xmake run {题目对应的target名称}
+xmake run
 ```
 
 ### Python 代码

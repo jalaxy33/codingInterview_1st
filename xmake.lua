@@ -330,6 +330,48 @@ target("68_02_CommonParentInBinaryTree")
     set_filename("out")
 
 
+-- 04. 分治
+
+target("07_ConstructBinaryTree")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/07_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("16_Power")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/16_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("17_Print1ToMaxOfNDigits")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/17*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("33_SquenceOfBST")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/33*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("51_InversePairs")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/51*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --

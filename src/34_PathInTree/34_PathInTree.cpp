@@ -16,15 +16,15 @@ class Solution {
    public:
     vector<vector<int>> pathSum( TreeNode* root, int target ) {
         // 预处理，清空原有数据
-        result.clear();
+        intResult.clear();
         path.clear();
 
         recur( root, target );
-        return result;
+        return intResult;
     }
 
    private:
-    vector<vector<int>> result;  // 记录最终结果
+    vector<vector<int>> intResult;  // 记录最终结果
     vector<int> path;            // 记录其中一条路径
 
     void recur( TreeNode* root, int target ) {
@@ -35,7 +35,7 @@ class Solution {
         // 成功条件：1) 目标值为0，且 2) 已到达叶节点
         if ( target == 0 && !root->left && !root->right )
             // C++ 中，push_back是复制，无需对动态变化的path特殊处理
-            result.push_back( path );
+            intResult.push_back( path );
         // 遍历左右子树
         recur( root->left, target );
         recur( root->right, target );

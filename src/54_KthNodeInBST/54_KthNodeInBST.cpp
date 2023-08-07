@@ -28,17 +28,17 @@ class Solution {
     int kthLargest( TreeNode* root, int k ) {
         this->k = k;  // 重置k的大小
         dfs( root );
-        return result;
+        return intResult;
     }
 
    private:
-    int result, k;
+    int intResult, k;
 
     void dfs( TreeNode* root ) {
         if ( !root ) return;
         dfs( root->right );    // 中序遍历的倒序
         if ( k == 0 ) return;  // 若k=0，说明已经找到节点，提前返回
-        if ( --k == 0 ) result = root->val;  // 递减k，直至找到节点
+        if ( --k == 0 ) intResult = root->val;  // 递减k，直至找到节点
         dfs( root->left );
     }
 };

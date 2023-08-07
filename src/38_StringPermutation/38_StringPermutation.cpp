@@ -13,22 +13,22 @@ using namespace std;
 class Solution {
    public:
     vector<string> permutation( string s, bool use_dfs = true ) {
-        result.clear();  // 清空旧数据
+        intResult.clear();  // 清空旧数据
         if ( use_dfs )
             dfs( s, 0 );
         else
             withStd( s );
-        return result;
+        return intResult;
     }
 
    private:
-    vector<string> result;
+    vector<string> intResult;
 
     // 使用递归
     void dfs( string s, int index ) {
         // 终止条件：index来到最后一位，此时只有一种可能
         if ( index == s.size() - 1 ) {
-            result.push_back( s );
+            intResult.push_back( s );
             return;
         }
 
@@ -47,7 +47,7 @@ class Solution {
     void withStd( string s ) {
         std::sort( s.begin(), s.end() );  // 先进行排序
         do {
-            result.push_back( s );
+            intResult.push_back( s );
         } while (
             std::next_permutation( s.begin(), s.end() ) );  // 探索下一组合
     }

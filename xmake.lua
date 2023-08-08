@@ -372,6 +372,41 @@ target("51_InversePairs")
     set_filename("out")
 
 
+-- 05. 排序
+
+target("40_KLeastNumbers")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/40*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("41_StreamMedian")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/41*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("45_StreamMedian")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/45*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("61_ContinousCards")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/61*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --

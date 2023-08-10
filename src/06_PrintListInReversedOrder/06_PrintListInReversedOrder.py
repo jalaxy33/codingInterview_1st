@@ -39,37 +39,30 @@ class Test:
     def __init__(self):
         self.solution = Solution()
 
-    def testMain(self, head: ListNode):
-        list_utils.PrintListNode(head)
+    def checkResult(self, head: ListNode):
+        list_utils.printListNode(head)
         print(self.solution.reversePrint(head, True))
         print(self.solution.reversePrint(head, False))
 
     def Test1(self):
         print("\nTest1:\n")
-        node1 = list_utils.CreateListNode(1)
-        node2 = list_utils.CreateListNode(2)
-        node3 = list_utils.CreateListNode(3)
-        node4 = list_utils.CreateListNode(4)
-        node5 = list_utils.CreateListNode(5)
+        vals = [1,2,3,4,5]
+        nodes = list_utils.createListNodesVec(vals)
+        list_utils.connectListNodesVec(nodes)
 
-        list_utils.ConnectListNodes(node1, node2)
-        list_utils.ConnectListNodes(node2, node3)
-        list_utils.ConnectListNodes(node3, node4)
-        list_utils.ConnectListNodes(node4, node5)
-
-        self.testMain(node1)
+        self.checkResult(nodes[0])
 
     # 只有一个结点的链表: 1
     def Test2(self):
         print("\nTest1:\n")
-        node1 = list_utils.CreateListNode(1)
+        node1 = list_utils.createListNode(1)
 
-        self.testMain(node1)
+        self.checkResult(node1)
 
     # 空链表
     def Test3(self):
         print("\nTest1:\n")
-        self.testMain(None)
+        self.checkResult(None)
 
     def runTest(self):
         self.Test1()

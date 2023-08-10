@@ -40,35 +40,28 @@ class Test:
     def __init__(self):
         self.solution = Solution()
 
-    def testMain(self, head: ListNode) -> None:
+    def checkResult(self, head: ListNode) -> None:
         print("The original list is:")
-        list_utils.PrintList(head)
+        list_utils.printList(head)
 
         reversed_head = self.solution.reverseList(head)
         print("The reversed list is:")
-        list_utils.PrintList(reversed_head)
+        list_utils.printList(reversed_head)
         print("\n")
 
     def Test1(self) -> None:
-        node1 = list_utils.CreateListNode(1)
-        node2 = list_utils.CreateListNode(2)
-        node3 = list_utils.CreateListNode(3)
-        node4 = list_utils.CreateListNode(4)
-        node5 = list_utils.CreateListNode(5)
+        vals = [1,2,3,4,5]
+        nodes = list_utils.createListNodesVec(vals)
+        list_utils.connectListNodesVec(nodes)
 
-        list_utils.ConnectListNodes(node1, node2)
-        list_utils.ConnectListNodes(node2, node3)
-        list_utils.ConnectListNodes(node3, node4)
-        list_utils.ConnectListNodes(node4, node5)
-
-        self.testMain(node1)
+        self.checkResult(nodes[0])
 
     def Test2(self) -> None:
-        node1 = list_utils.CreateListNode(1)
-        self.testMain(node1)
+        node1 = list_utils.createListNode(1)
+        self.checkResult(node1)
 
     def Test3(self) -> None:
-        self.testMain(None)
+        self.checkResult(None)
 
     def runTest(self):
         self.Test1()

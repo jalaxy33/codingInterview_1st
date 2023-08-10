@@ -20,8 +20,6 @@
 
 using namespace std;
 
-using TreeNode = BinaryTreeNode;
-
 class Solution {
    public:
     // 问题转化为：求二叉搜索树的中序遍历倒序的第k大节点
@@ -60,11 +58,14 @@ class Test {
     //       5 7    9  11
     void TestA() {
         ValVec vals{ 8, 6, 10, 5, 7, 9, 11 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
-        connectNodesIndex( nodes, 2, 5, 6 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 2, 5, 6 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "TestA1", nodes[ 0 ], 1, 11 );
         checkResult( "TestA2", nodes[ 0 ], 2, 10 );
@@ -89,12 +90,15 @@ class Test {
     //       1
     void TestB() {
         ValVec vals{ 5, 4, 3, 2, 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, -1 );
-        connectNodesIndex( nodes, 1, 2, -1 );
-        connectNodesIndex( nodes, 2, 3, -1 );
-        connectNodesIndex( nodes, 3, 4, -1 );
+        TreeIndexVec idxs{
+            { 0, 1, -1 },
+            { 1, 2, -1 },
+            { 2, 3, -1 },
+            { 3, 4, -1 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "TestB1", nodes[ 0 ], 1, 5 );
         checkResult( "TestB2", nodes[ 0 ], 2, 4 );
@@ -117,12 +121,15 @@ class Test {
     //         5
     void TestC() {
         ValVec vals{ 1, 2, 3, 4, 5 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, -1, 1 );
-        connectNodesIndex( nodes, 1, -1, 2 );
-        connectNodesIndex( nodes, 2, -1, 3 );
-        connectNodesIndex( nodes, 3, -1, 4 );
+        TreeIndexVec idxs{
+            { 0, -1, 1 },
+            { 1, -1, 2 },
+            { 2, -1, 3 },
+            { 3, -1, 4 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "TestC1", nodes[ 0 ], 1, 5 );
         checkResult( "TestC2", nodes[ 0 ], 2, 4 );
@@ -137,7 +144,7 @@ class Test {
     // There is only one node in a tree
     void TestD() {
         ValVec vals{ 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
         checkResult( "TestD1", nodes[ 0 ], 1, 1 );
         cout << endl;

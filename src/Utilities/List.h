@@ -1,5 +1,7 @@
 _Pragma( "once" );
 
+#include <vector>
+
 struct ListNode {
     int val;
     ListNode *next;
@@ -7,10 +9,20 @@ struct ListNode {
     ListNode( int x ) : val( x ), next( nullptr ) {}
 };
 
-ListNode *CreateListNode( int value );
-void ConnectListNodes( ListNode *pCurrent, ListNode *pNext );
-void PrintListNode( ListNode *pNode );
-void PrintList( ListNode *pHead );
-void DestroyList( ListNode *pHead );
-void AddToTail( ListNode **pHead, int value );
-void RemoveNode( ListNode **pHead, int value );
+using ValVec = std::vector<int>;
+using ListNodeVec = std::vector<ListNode*>;
+
+ListNode *createListNode( int value );
+void connectListNodes( ListNode *pCurrent, ListNode *pNext );
+void printListNode( ListNode *pNode );
+void printList( ListNode *pHead );
+void destroyList( ListNode *pHead );
+void addToTail( ListNode **pHead, int value );
+void removeNode( ListNode **pHead, int value );
+
+
+// multi-node
+ListNodeVec createListNodesVec(const ValVec& vals);
+void connectListNodesVec(ListNodeVec& nodes);
+
+

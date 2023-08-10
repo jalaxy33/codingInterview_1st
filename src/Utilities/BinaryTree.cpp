@@ -1,23 +1,23 @@
 #include "BinaryTree.h"
 
 #include <iostream>
+#include <tuple>
 
 using namespace std;
 
-BinaryTreeNode* createBinaryTreeNode( int value ) {
-    BinaryTreeNode* pNode = new BinaryTreeNode( value );
+TreeNode* createBinaryTreeNode( int value ) {
+    TreeNode* pNode = new TreeNode( value );
     return pNode;
 }
 
-void connectTreeNodes( BinaryTreeNode* pParent, BinaryTreeNode* pLeft,
-                       BinaryTreeNode* pRight ) {
+void connectTreeNodes( TreeNode* pParent, TreeNode* pLeft, TreeNode* pRight ) {
     if ( pParent != nullptr ) {
         pParent->left = pLeft;
         pParent->right = pRight;
     }
 }
 
-void printTreeNode( const BinaryTreeNode* pNode ) {
+void printTreeNode( const TreeNode* pNode ) {
     if ( pNode != nullptr ) {
         cout << "value of this node is: " << pNode->val << endl;
 
@@ -37,7 +37,7 @@ void printTreeNode( const BinaryTreeNode* pNode ) {
     cout << endl;
 }
 
-void printTree( const BinaryTreeNode* pRoot ) {
+void printTree( const TreeNode* pRoot ) {
     printTreeNode( pRoot );
 
     if ( pRoot != nullptr ) {
@@ -46,10 +46,10 @@ void printTree( const BinaryTreeNode* pRoot ) {
     }
 }
 
-void destroyTree( BinaryTreeNode* pRoot ) {
+void destroyTree( TreeNode* pRoot ) {
     if ( pRoot != nullptr ) {
-        BinaryTreeNode* pLeft = pRoot->left;
-        BinaryTreeNode* pRight = pRoot->right;
+        TreeNode* pLeft = pRoot->left;
+        TreeNode* pRight = pRoot->right;
 
         delete pRoot;
         pRoot = nullptr;
@@ -59,16 +59,26 @@ void destroyTree( BinaryTreeNode* pRoot ) {
     }
 }
 
-NodeVec createNodesVec( const ValVec& vals ) {
-    NodeVec nodes;
+// ================ multi-nodes =========================
+
+TreeNodeVec createTreeNodesVec( const ValVec& vals ) {
+    TreeNodeVec nodes;
     for ( int i = 0; i < vals.size(); i++ )
         nodes.push_back( createBinaryTreeNode( vals[ i ] ) );
     return nodes;
 }
 
-void connectNodesIndex( NodeVec& nodes, int parent_i, int left_i,
-                        int right_i ) {
-    BinaryTreeNode* pLeft = ( left_i != -1 ) ? nodes[ left_i ] : nullptr;
-    BinaryTreeNode* pRight = ( right_i != -1 ) ? nodes[ right_i ] : nullptr;
+void connectTreeNodesIndex( TreeNodeVec& nodes, int parent_i, int left_i,
+                            int right_i ) {
+    TreeNode* pLeft = ( left_i != -1 ) ? nodes[ left_i ] : nullptr;
+    TreeNode* pRight = ( right_i != -1 ) ? nodes[ right_i ] : nullptr;
     connectTreeNodes( nodes[ parent_i ], pLeft, pRight );
+}
+
+void connectTreeNodesIndexVec( TreeNodeVec& nodes, TreeIndexVec& indexes ) {
+    int parent_i, left_i, right_i;
+    for ( TreeIndex idxs : indexes ) {
+        std::tie( parent_i, left_i, right_i ) = idxs;
+        connectTreeNodesIndex( nodes, parent_i, left_i, right_i );
+    }
 }

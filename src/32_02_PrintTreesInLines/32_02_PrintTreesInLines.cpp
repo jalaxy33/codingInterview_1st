@@ -11,8 +11,6 @@
 
 using namespace std;
 
-using TreeNode = BinaryTreeNode;
-
 class Solution {
    public:
     // 用队列实现bfs
@@ -59,11 +57,14 @@ class Test {
     //      4  8     12  16
     void Test1() {
         ValVec vals{ 10, 6, 14, 4, 8, 12, 16 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
-        connectNodesIndex( nodes, 2, 5, 6 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 2, 5, 6 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test1", nodes[ 0 ] );
         destroyTree( nodes[ 0 ] );
@@ -80,12 +81,15 @@ class Test {
     //       1
     void Test2() {
         ValVec vals{ 5, 4, 3, 2, 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, -1 );
-        connectNodesIndex( nodes, 1, 2, -1 );
-        connectNodesIndex( nodes, 2, 3, -1 );
-        connectNodesIndex( nodes, 3, 4, -1 );
+        TreeIndexVec idxs{
+            { 0, 1, -1 },
+            { 1, 2, -1 },
+            { 2, 3, -1 },
+            { 3, 4, -1 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test2", nodes[ 0 ] );
         destroyTree( nodes[ 0 ] );
@@ -102,12 +106,15 @@ class Test {
     //         5
     void Test3() {
         ValVec vals{ 1, 2, 3, 4, 5 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, -1, 1 );
-        connectNodesIndex( nodes, 1, -1, 2 );
-        connectNodesIndex( nodes, 2, -1, 3 );
-        connectNodesIndex( nodes, 3, -1, 4 );
+        TreeIndexVec idxs{
+            { 0, -1, 1 },
+            { 1, -1, 2 },
+            { 2, -1, 3 },
+            { 3, -1, 4 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test3", nodes[ 0 ] );
         destroyTree( nodes[ 0 ] );
@@ -116,7 +123,7 @@ class Test {
     // 树中只有1个结点
     void Test4() {
         ValVec vals{ 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
         checkResult( "Test4", nodes[ 0 ] );
         destroyTree( nodes[ 0 ] );

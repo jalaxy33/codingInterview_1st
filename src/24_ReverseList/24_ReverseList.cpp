@@ -52,44 +52,34 @@ class Solution {
 
 class Test {
    public:
-    ListNode* testMain( ListNode* pHead ) {
+    void checkResult( ListNode* pHead ) {
         cout << "\nThe original list is: \n";
-        PrintList( pHead );
+        printList( pHead );
 
         ListNode* pReversedHead = solution.reverseList( pHead );
         cout << "The reversed list is:\n";
-        PrintList( pReversedHead );
+        printList( pReversedHead );
         cout << "\n";
-        return pReversedHead;
+
+        destroyList( pReversedHead );
     }
 
     // 输入的链表有多个结点
     void Test1() {
-        ListNode* pNode1 = CreateListNode( 1 );
-        ListNode* pNode2 = CreateListNode( 2 );
-        ListNode* pNode3 = CreateListNode( 3 );
-        ListNode* pNode4 = CreateListNode( 4 );
-        ListNode* pNode5 = CreateListNode( 5 );
-
-        ConnectListNodes( pNode1, pNode2 );
-        ConnectListNodes( pNode2, pNode3 );
-        ConnectListNodes( pNode3, pNode4 );
-        ConnectListNodes( pNode4, pNode5 );
-
-        ListNode* pReversedHead = testMain( pNode1 );
-
-        DestroyList( pReversedHead );
+        ValVec vals{ 1, 2, 3, 4, 5 };
+        ListNodeVec nodes = createListNodesVec( vals );
+        connectListNodesVec( nodes );
+        checkResult( nodes[ 0 ] );
     }
 
     // 输入的链表只有一个结点
     void Test2() {
-        ListNode* pNode1 = CreateListNode( 1 );
-        ListNode* pReversedHead = testMain( pNode1 );
-        DestroyList( pReversedHead );
+        ListNode* pNode1 = createListNode( 1 );
+        checkResult( pNode1 );
     }
 
     // 输入空链表
-    void Test3() { testMain( nullptr ); }
+    void Test3() { checkResult( nullptr ); }
 
     void runTest() {
         Test1();

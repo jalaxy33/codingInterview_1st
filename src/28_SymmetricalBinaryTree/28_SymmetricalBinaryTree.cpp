@@ -19,8 +19,6 @@
 
 using namespace std;
 
-using TreeNode = BinaryTreeNode;
-
 class Solution {
    public:
     bool isSymmetric( TreeNode* root ) {
@@ -55,11 +53,14 @@ class Test {
     //       5 7    7 5
     void Test1() {
         ValVec vals{ 8, 6, 6, 5, 7, 7, 5 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
-        connectNodesIndex( nodes, 2, 5, 6 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 2, 5, 6 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test1", nodes[ 0 ], true );
         destroyTree( nodes[ 0 ] );
@@ -70,11 +71,14 @@ class Test {
     //       5 7    7 5
     void Test2() {
         ValVec vals{ 8, 6, 9, 5, 7, 7, 5 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
-        connectNodesIndex( nodes, 2, 5, 6 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 2, 5, 6 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test2", nodes[ 0 ], false );
         destroyTree( nodes[ 0 ] );
@@ -85,11 +89,14 @@ class Test {
     //       5 7    7
     void Test3() {
         ValVec vals{ 8, 6, 6, 5, 7, 7 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
-        connectNodesIndex( nodes, 2, 5, -1 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 2, 5, -1 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test3", nodes[ 0 ], false );
         destroyTree( nodes[ 0 ] );
@@ -106,15 +113,13 @@ class Test {
     //       1               1
     void Test4() {
         ValVec vals{ 5, 3, 3, 4, 4, 2, 2, 1, 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, -1 );
-        connectNodesIndex( nodes, 2, -1, 4 );
-        connectNodesIndex( nodes, 3, 5, -1 );
-        connectNodesIndex( nodes, 4, -1, 6 );
-        connectNodesIndex( nodes, 5, 7, -1 );
-        connectNodesIndex( nodes, 6, -1, 8 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },  { 1, 3, -1 }, { 2, -1, 4 }, { 3, 5, -1 },
+            { 4, -1, 6 }, { 5, 7, -1 }, { 6, -1, 8 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test4", nodes[ 0 ], true );
         destroyTree( nodes[ 0 ] );
@@ -131,15 +136,13 @@ class Test {
     //       1               1
     void Test5() {
         ValVec vals{ 5, 3, 3, 4, 4, 6, 2, 1, 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, -1 );
-        connectNodesIndex( nodes, 2, -1, 4 );
-        connectNodesIndex( nodes, 3, 5, -1 );
-        connectNodesIndex( nodes, 4, -1, 6 );
-        connectNodesIndex( nodes, 5, 7, -1 );
-        connectNodesIndex( nodes, 6, -1, 8 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },  { 1, 3, -1 }, { 2, -1, 4 }, { 3, 5, -1 },
+            { 4, -1, 6 }, { 5, 7, -1 }, { 6, -1, 8 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test5", nodes[ 0 ], false );
         destroyTree( nodes[ 0 ] );
@@ -156,15 +159,13 @@ class Test {
     //                       1
     void Test6() {
         ValVec vals{ 5, 3, 3, 4, 4, 2, 2, 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, -1 );
-        connectNodesIndex( nodes, 2, -1, 4 );
-        connectNodesIndex( nodes, 3, 5, -1 );
-        connectNodesIndex( nodes, 4, -1, 6 );
-        connectNodesIndex( nodes, 5, -1, -1 );
-        connectNodesIndex( nodes, 6, -1, 7 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },  { 1, 3, -1 },  { 2, -1, 4 }, { 3, 5, -1 },
+            { 4, -1, 6 }, { 5, -1, -1 }, { 6, -1, 7 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test6", nodes[ 0 ], false );
         destroyTree( nodes[ 0 ] );
@@ -173,7 +174,7 @@ class Test {
     // 只有一个结点
     void Test7() {
         ValVec vals{ 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
         checkResult( "Test7", nodes[ 0 ], true );
         destroyTree( nodes[ 0 ] );
@@ -192,13 +193,12 @@ class Test {
     //         5           5
     void Test9() {
         ValVec vals{ 5, 5, 5, 5, 5, 5, 5 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, -1 );
-        connectNodesIndex( nodes, 2, -1, 4 );
-        connectNodesIndex( nodes, 3, 5, -1 );
-        connectNodesIndex( nodes, 4, -1, 6 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 }, { 1, 3, -1 }, { 2, -1, 4 }, { 3, 5, -1 }, { 4, -1, 6 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test9", nodes[ 0 ], true );
         destroyTree( nodes[ 0 ] );
@@ -214,13 +214,12 @@ class Test {
     //         5       5
     void Test10() {
         ValVec vals{ 5, 5, 5, 5, 5, 5, 5 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, -1 );
-        connectNodesIndex( nodes, 2, -1, 4 );
-        connectNodesIndex( nodes, 3, 5, -1 );
-        connectNodesIndex( nodes, 4, 6, -1 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 }, { 1, 3, -1 }, { 2, -1, 4 }, { 3, 5, -1 }, { 4, 6, -1 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test10", nodes[ 0 ], false );
         destroyTree( nodes[ 0 ] );

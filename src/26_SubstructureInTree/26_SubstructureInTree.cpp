@@ -18,8 +18,6 @@
 
 using namespace std;
 
-using TreeNode = BinaryTreeNode;
-
 class Solution {
    public:
     bool isSubStructure( TreeNode* A, TreeNode* B ) {
@@ -66,17 +64,21 @@ class Test {
         ValVec Avals{ 8, 8, 7, 9, 2, 4, 7 };
         ValVec Bvals{ 8, 9, 2 };
 
-        NodeVec Anodes = createNodesVec( Avals );
-        NodeVec Bnodes = createNodesVec( Bvals );
+        TreeNodeVec Anodes = createTreeNodesVec( Avals );
+        TreeNodeVec Bnodes = createTreeNodesVec( Bvals );
 
-        connectNodesIndex( Anodes, 0, 1, 2 );
-        connectNodesIndex( Anodes, 1, 3, 4 );
-        connectNodesIndex( Anodes, 4, 5, 6 );
-
-        connectNodesIndex( Bnodes, 0, 1, 2 );
+        TreeIndexVec Aidxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 4, 5, 6 },
+        };
+        TreeIndexVec Bidxs{
+            { 0, 1, 2 },
+        };
+        connectTreeNodesIndexVec( Anodes, Aidxs );
+        connectTreeNodesIndexVec( Bnodes, Bidxs );
 
         checkResult( "Test1", Anodes[ 0 ], Bnodes[ 0 ], true );
-
         destroyTree( Anodes[ 0 ] );
         destroyTree( Bnodes[ 0 ] );
     }
@@ -93,17 +95,21 @@ class Test {
         ValVec Avals{ 8, 8, 7, 9, 3, 4, 7 };
         ValVec Bvals{ 8, 9, 2 };
 
-        NodeVec Anodes = createNodesVec( Avals );
-        NodeVec Bnodes = createNodesVec( Bvals );
+        TreeNodeVec Anodes = createTreeNodesVec( Avals );
+        TreeNodeVec Bnodes = createTreeNodesVec( Bvals );
 
-        connectNodesIndex( Anodes, 0, 1, 2 );
-        connectNodesIndex( Anodes, 1, 3, 4 );
-        connectNodesIndex( Anodes, 4, 5, 6 );
-
-        connectNodesIndex( Bnodes, 0, 1, 2 );
+        TreeIndexVec Aidxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 4, 5, 6 },
+        };
+        TreeIndexVec Bidxs{
+            { 0, 1, 2 },
+        };
+        connectTreeNodesIndexVec( Anodes, Aidxs );
+        connectTreeNodesIndexVec( Bnodes, Bidxs );
 
         checkResult( "Test2", Anodes[ 0 ], Bnodes[ 0 ], false );
-
         destroyTree( Anodes[ 0 ] );
         destroyTree( Bnodes[ 0 ] );
     }
@@ -122,19 +128,23 @@ class Test {
         ValVec Avals{ 8, 8, 9, 2, 5 };
         ValVec Bvals{ 8, 9, 2 };
 
-        NodeVec Anodes = createNodesVec( Avals );
-        NodeVec Bnodes = createNodesVec( Bvals );
+        TreeNodeVec Anodes = createTreeNodesVec( Avals );
+        TreeNodeVec Bnodes = createTreeNodesVec( Bvals );
 
-        connectNodesIndex( Anodes, 0, 1, -1 );
-        connectNodesIndex( Anodes, 1, 2, -1 );
-        connectNodesIndex( Anodes, 2, 3, -1 );
-        connectNodesIndex( Anodes, 3, 4, -1 );
-
-        connectNodesIndex( Bnodes, 0, 1, -1 );
-        connectNodesIndex( Bnodes, 1, 2, -1 );
+        TreeIndexVec Aidxs{
+            { 0, 1, -1 },
+            { 1, 2, -1 },
+            { 2, 3, -1 },
+            { 3, 4, -1 },
+        };
+        TreeIndexVec Bidxs{
+            { 0, 1, -1 },
+            { 1, 2, -1 },
+        };
+        connectTreeNodesIndexVec( Anodes, Aidxs );
+        connectTreeNodesIndexVec( Bnodes, Bidxs );
 
         checkResult( "Test3", Anodes[ 0 ], Bnodes[ 0 ], true );
-
         destroyTree( Anodes[ 0 ] );
         destroyTree( Bnodes[ 0 ] );
     }
@@ -153,19 +163,23 @@ class Test {
         ValVec Avals{ 8, 8, 9, 2, 5 };
         ValVec Bvals{ 8, 9, 3 };
 
-        NodeVec Anodes = createNodesVec( Avals );
-        NodeVec Bnodes = createNodesVec( Bvals );
+        TreeNodeVec Anodes = createTreeNodesVec( Avals );
+        TreeNodeVec Bnodes = createTreeNodesVec( Bvals );
 
-        connectNodesIndex( Anodes, 0, 1, -1 );
-        connectNodesIndex( Anodes, 1, 2, -1 );
-        connectNodesIndex( Anodes, 2, 3, -1 );
-        connectNodesIndex( Anodes, 3, 4, -1 );
-
-        connectNodesIndex( Bnodes, 0, 1, -1 );
-        connectNodesIndex( Bnodes, 1, 2, -1 );
+        TreeIndexVec Aidxs{
+            { 0, 1, -1 },
+            { 1, 2, -1 },
+            { 2, 3, -1 },
+            { 3, 4, -1 },
+        };
+        TreeIndexVec Bidxs{
+            { 0, 1, -1 },
+            { 1, 2, -1 },
+        };
+        connectTreeNodesIndexVec( Anodes, Aidxs );
+        connectTreeNodesIndexVec( Bnodes, Bidxs );
 
         checkResult( "Test4", Anodes[ 0 ], Bnodes[ 0 ], false );
-
         destroyTree( Anodes[ 0 ] );
         destroyTree( Bnodes[ 0 ] );
     }
@@ -184,19 +198,23 @@ class Test {
         ValVec Avals{ 8, 8, 9, 2, 5 };
         ValVec Bvals{ 8, 9, 2 };
 
-        NodeVec Anodes = createNodesVec( Avals );
-        NodeVec Bnodes = createNodesVec( Bvals );
+        TreeNodeVec Anodes = createTreeNodesVec( Avals );
+        TreeNodeVec Bnodes = createTreeNodesVec( Bvals );
 
-        connectNodesIndex( Anodes, 0, -1, 1 );
-        connectNodesIndex( Anodes, 1, -1, 2 );
-        connectNodesIndex( Anodes, 2, -1, 3 );
-        connectNodesIndex( Anodes, 3, -1, 4 );
-
-        connectNodesIndex( Bnodes, 0, -1, 1 );
-        connectNodesIndex( Bnodes, 1, -1, 2 );
+        TreeIndexVec Aidxs{
+            { 0, -1, 1 },
+            { 1, -1, 2 },
+            { 2, -1, 3 },
+            { 3, -1, 4 },
+        };
+        TreeIndexVec Bidxs{
+            { 0, -1, 1 },
+            { 1, -1, 2 },
+        };
+        connectTreeNodesIndexVec( Anodes, Aidxs );
+        connectTreeNodesIndexVec( Bnodes, Bidxs );
 
         checkResult( "Test5", Anodes[ 0 ], Bnodes[ 0 ], true );
-
         destroyTree( Anodes[ 0 ] );
         destroyTree( Bnodes[ 0 ] );
     }
@@ -215,19 +233,23 @@ class Test {
         ValVec Avals{ 8, 8, 9, 2, 5 };
         ValVec Bvals{ 8, 9, 3, 2 };
 
-        NodeVec Anodes = createNodesVec( Avals );
-        NodeVec Bnodes = createNodesVec( Bvals );
+        TreeNodeVec Anodes = createTreeNodesVec( Avals );
+        TreeNodeVec Bnodes = createTreeNodesVec( Bvals );
 
-        connectNodesIndex( Anodes, 0, -1, 1 );
-        connectNodesIndex( Anodes, 1, -1, 2 );
-        connectNodesIndex( Anodes, 2, -1, 3 );
-        connectNodesIndex( Anodes, 3, -1, 4 );
-
-        connectNodesIndex( Bnodes, 0, -1, 1 );
-        connectNodesIndex( Bnodes, 1, 2, 3 );
+        TreeIndexVec Aidxs{
+            { 0, -1, 1 },
+            { 1, -1, 2 },
+            { 2, -1, 3 },
+            { 3, -1, 4 },
+        };
+        TreeIndexVec Bidxs{
+            { 0, -1, 1 },
+            { 1, 2, 3 },
+        };
+        connectTreeNodesIndexVec( Anodes, Aidxs );
+        connectTreeNodesIndexVec( Bnodes, Bidxs );
 
         checkResult( "Test6", Anodes[ 0 ], Bnodes[ 0 ], false );
-
         destroyTree( Anodes[ 0 ] );
         destroyTree( Bnodes[ 0 ] );
     }
@@ -235,28 +257,32 @@ class Test {
     // 树A为空树
     void Test7() {
         ValVec Bvals{ 8, 9, 3, 2 };
-        NodeVec Bnodes = createNodesVec( Bvals );
+        TreeNodeVec Bnodes = createTreeNodesVec( Bvals );
 
-        connectNodesIndex( Bnodes, 0, -1, 1 );
-        connectNodesIndex( Bnodes, 1, 2, 3 );
+        TreeIndexVec Bidxs{
+            { 0, -1, 1 },
+            { 1, 2, 3 },
+        };
+        connectTreeNodesIndexVec( Bnodes, Bidxs );
 
         checkResult( "Test7", nullptr, Bnodes[ 0 ], false );
-
         destroyTree( Bnodes[ 0 ] );
     }
 
     // 树B为空树
     void Test8() {
         ValVec Avals{ 8, 8, 9, 2, 5 };
-        NodeVec Anodes = createNodesVec( Avals );
+        TreeNodeVec Anodes = createTreeNodesVec( Avals );
 
-        connectNodesIndex( Anodes, 0, -1, 1 );
-        connectNodesIndex( Anodes, 1, -1, 2 );
-        connectNodesIndex( Anodes, 2, -1, 3 );
-        connectNodesIndex( Anodes, 3, -1, 4 );
+        TreeIndexVec Aidxs{
+            { 0, -1, 1 },
+            { 1, -1, 2 },
+            { 2, -1, 3 },
+            { 3, -1, 4 },
+        };
+        connectTreeNodesIndexVec( Anodes, Aidxs );
 
         checkResult( "Test8", Anodes[ 0 ], nullptr, false );
-
         destroyTree( Anodes[ 0 ] );
     }
 

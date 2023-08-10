@@ -12,7 +12,7 @@ sys.path.append(os.path.split(sys.path[0])[0])
 
 
 from Utilities import binary_tree
-from Utilities.binary_tree import BinaryTreeNode as TreeNode
+from Utilities.binary_tree import TreeNode
 
 
 class Solution:
@@ -53,11 +53,14 @@ class Test:
     #       5 7    9  11
     def TestA(self):
         vals = [8, 6, 10, 5, 7, 9, 11]
-        nodes = binary_tree.createNodesVec(vals)
+        nodes = binary_tree.createTreeNodesVec(vals)
 
-        binary_tree.connectNodesIndex(nodes, 0, 1, 2)
-        binary_tree.connectNodesIndex(nodes, 1, 3, 4)
-        binary_tree.connectNodesIndex(nodes, 2, 5, 6)
+        idxs = [
+            (0, 1, 2),
+            (1, 3, 4),
+            (2, 5, 6),
+        ]
+        binary_tree.connectTreeNodesIndexVec(nodes, idxs)
 
         self.checkResult("TestA1", nodes[0], 1, 11)
         self.checkResult("TestA2", nodes[0], 2, 10)
@@ -79,12 +82,15 @@ class Test:
     #       1
     def TestB(self):
         vals = [5, 4, 3, 2, 1]
-        nodes = binary_tree.createNodesVec(vals)
+        nodes = binary_tree.createTreeNodesVec(vals)
 
-        binary_tree.connectNodesIndex(nodes, 0, 1, -1)
-        binary_tree.connectNodesIndex(nodes, 1, 2, -1)
-        binary_tree.connectNodesIndex(nodes, 2, 3, -1)
-        binary_tree.connectNodesIndex(nodes, 3, 4, -1)
+        idxs = [
+            (0, 1, -1),
+            (1, 2, -1),
+            (2, 3, -1),
+            (3, 4, -1),
+        ]
+        binary_tree.connectTreeNodesIndexVec(nodes, idxs)
 
         self.checkResult("TestB1", nodes[0], 1, 5)
         self.checkResult("TestB2", nodes[0], 2, 4)
@@ -104,12 +110,15 @@ class Test:
     #         5
     def TestC(self):
         vals = [1, 2, 3, 4, 5]
-        nodes = binary_tree.createNodesVec(vals)
+        nodes = binary_tree.createTreeNodesVec(vals)
 
-        binary_tree.connectNodesIndex(nodes, 0, -1, 1)
-        binary_tree.connectNodesIndex(nodes, 1, -1, 2)
-        binary_tree.connectNodesIndex(nodes, 2, -1, 3)
-        binary_tree.connectNodesIndex(nodes, 3, -1, 4)
+        idxs = [
+            (0, -1, 1),
+            (1, -1, 2),
+            (2, -1, 3),
+            (3, -1, 4),
+        ]
+        binary_tree.connectTreeNodesIndexVec(nodes, idxs)
 
         self.checkResult("TestC1", nodes[0], 1, 5)
         self.checkResult("TestC2", nodes[0], 2, 4)
@@ -121,7 +130,7 @@ class Test:
     # There is only one node in a tree
     def TestD(self):
         vals = [1]
-        nodes = binary_tree.createNodesVec(vals)
+        nodes = binary_tree.createTreeNodesVec(vals)
 
         self.checkResult("TestD1", nodes[0], 1, 1)
         print("\n")

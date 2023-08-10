@@ -49,6 +49,7 @@ target("20_NumericStrings")
 
 target("24_ReverseList")
     set_kind("binary")
+    add_deps("utils")
     add_files("src/24_*/*.cpp")
     set_default(false)
     set_filename("out")
@@ -452,6 +453,16 @@ target("53_02_MissingNumber")
     set_kind("binary")
     add_deps("utils")
     add_files("src/53_02_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+-- 07. 双指针
+
+target("18_DeleteNodeInList")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/18_*/*.cpp")
     set_default(false)
     set_filename("out")
 

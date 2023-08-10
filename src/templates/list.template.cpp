@@ -1,22 +1,23 @@
 /**
- * Definition for a binary tree node.
- * struct TreeNode {
+ * Definition for singly-linked list.
+ * struct ListNode {
  *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(nullptr) {}
  * };
  */
 
+#include "../Utilities/List.h"
+
 #include <iostream>
 #include <string>
-#include <vector>
-
-#include "../Utilities/BinaryTree.h"
 
 using namespace std;
 
-class Solution {};
+class Solution {
+   public:
+    ListNode* deleteNode( ListNode* head, int val ) {}
+};
 
 class Test {
    public:

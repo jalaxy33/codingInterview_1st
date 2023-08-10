@@ -1,27 +1,30 @@
+#include <tuple>
 _Pragma( "once" );
 
 #include <vector>
 
-struct BinaryTreeNode {
+struct TreeNode {
     int val;
-    BinaryTreeNode* left;
-    BinaryTreeNode* right;
+    TreeNode* left;
+    TreeNode* right;
 
-    BinaryTreeNode( int x ) : val( x ), left( nullptr ), right( nullptr ) {}
+    TreeNode( int x ) : val( x ), left( nullptr ), right( nullptr ) {}
 };
 
 using ValVec = std::vector<int>;
-using NodeVec = std::vector<BinaryTreeNode*>;
+using TreeNodeVec = std::vector<TreeNode*>;
+using TreeIndex = std::tuple<int, int, int>;
+using TreeIndexVec = std::vector<TreeIndex>;
 
 // single-node funcs
-BinaryTreeNode* createBinaryTreeNode( int value );
-void connectTreeNodes( BinaryTreeNode* pParent, BinaryTreeNode* pLeft,
-                       BinaryTreeNode* pRight );
-void printTreeNode( const BinaryTreeNode* pNode );
-void printTree( const BinaryTreeNode* pRoot );
-void destroyTree( BinaryTreeNode* pRoot );
+TreeNode* createBinaryTreeNode( int value );
+void connectTreeNodes( TreeNode* pParent, TreeNode* pLeft, TreeNode* pRight );
+void printTreeNode( const TreeNode* pNode );
+void printTree( const TreeNode* pRoot );
+void destroyTree( TreeNode* pRoot );
 
 // multi-node funcs
-NodeVec createNodesVec( const ValVec& vals );
-void connectNodesIndex( NodeVec& nodes, int parent_i, int left_i = -1,
-                        int right_i = -1 );
+TreeNodeVec createTreeNodesVec( const ValVec& vals );
+void connectTreeNodesIndex( TreeNodeVec& nodes, int parent_i, int left_i = -1,
+                            int right_i = -1 );
+void connectTreeNodesIndexVec( TreeNodeVec& nodes, TreeIndexVec& indexes );

@@ -18,8 +18,6 @@
 
 using namespace std;
 
-using TreeNode = BinaryTreeNode;
-
 class Codec {
    public:
     // Encodes a tree to a single string.
@@ -118,11 +116,14 @@ class Test {
             "[8,6,10,5,7,9,11,null,null,null,null,null,null,null,null]";
 
         ValVec vals{ 8, 6, 10, 5, 7, 9, 11 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
-        connectNodesIndex( nodes, 2, 5, 6 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 2, 5, 6 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test1", nodes[ 0 ], data );
         destroyTree( nodes[ 0 ] );
@@ -136,11 +137,14 @@ class Test {
         string data = "[5,4,null,3,null,2,null,null,null]";
 
         ValVec vals{ 5, 4, 3, 2 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, -1 );
-        connectNodesIndex( nodes, 1, 2, -1 );
-        connectNodesIndex( nodes, 2, 3, -1 );
+        TreeIndexVec idxs{
+            { 0, 1, -1 },
+            { 1, 2, -1 },
+            { 2, 3, -1 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test2", nodes[ 0 ], data );
         destroyTree( nodes[ 0 ] );
@@ -154,11 +158,14 @@ class Test {
         string data = "[5,null,4,null,3,null,2,null,null]";
 
         ValVec vals{ 5, 4, 3, 2 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, -1, 1 );
-        connectNodesIndex( nodes, 1, -1, 2 );
-        connectNodesIndex( nodes, 2, -1, 3 );
+        TreeIndexVec idxs{
+            { 0, -1, 1 },
+            { 1, -1, 2 },
+            { 2, -1, 3 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test3", nodes[ 0 ], data );
         destroyTree( nodes[ 0 ] );
@@ -177,16 +184,13 @@ class Test {
             "null]";
 
         ValVec vals{ 5, 5, 5, 5, 5, 5, 5, 5, 5 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, -1, 1 );
-        connectNodesIndex( nodes, 1, -1, 2 );
-        connectNodesIndex( nodes, 2, 3, -1 );
-        connectNodesIndex( nodes, 2, 3, -1 );
-        connectNodesIndex( nodes, 3, 4, -1 );
-        connectNodesIndex( nodes, 4, 5, 6 );
-        connectNodesIndex( nodes, 5, 7, -1 );
-        connectNodesIndex( nodes, 6, -1, 8 );
+        TreeIndexVec idxs{
+            { 0, -1, 1 }, { 1, -1, 2 }, { 2, 3, -1 }, { 2, 3, -1 },
+            { 3, 4, -1 }, { 4, 5, 6 },  { 5, 7, -1 }, { 6, -1, 8 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test4", nodes[ 0 ], data );
         destroyTree( nodes[ 0 ] );
@@ -197,7 +201,7 @@ class Test {
         string data = "[1,null,null]";
 
         ValVec vals{ 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
         checkResult( "Test5", nodes[ 0 ], data );
         destroyTree( nodes[ 0 ] );

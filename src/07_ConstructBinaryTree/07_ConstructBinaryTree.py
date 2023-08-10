@@ -12,7 +12,7 @@ sys.path.append(os.path.split(sys.path[0])[0])
 
 
 from Utilities import binary_tree
-from Utilities.binary_tree import BinaryTreeNode as TreeNode
+from Utilities.binary_tree import TreeNode
 
 
 class Solution:

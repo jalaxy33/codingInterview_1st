@@ -24,8 +24,6 @@
 
 using namespace std;
 
-using TreeNode = BinaryTreeNode;
-
 class Solution {
    public:
     // 前序遍历确认根节点，中序遍历确认左右子树

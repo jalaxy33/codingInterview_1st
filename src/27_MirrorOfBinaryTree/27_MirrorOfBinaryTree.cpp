@@ -19,8 +19,6 @@
 
 using namespace std;
 
-using TreeNode = BinaryTreeNode;
-
 class Solution {
    public:
     TreeNode* mirrorTree( TreeNode* pRoot, bool use_recur = false ) {
@@ -82,11 +80,14 @@ class Test {
     //       5 7    9  11
     void Test1() {
         ValVec vals{ 8, 6, 10, 5, 7, 9, 11 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
-        connectNodesIndex( nodes, 2, 5, 6 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 2, 5, 6 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test1", nodes[ 0 ] );
     }
@@ -99,12 +100,15 @@ class Test {
     //    4
     void Test2() {
         ValVec vals{ 8, 7, 6, 5, 4 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, -1 );
-        connectNodesIndex( nodes, 1, 2, -1 );
-        connectNodesIndex( nodes, 2, 3, -1 );
-        connectNodesIndex( nodes, 3, 4, -1 );
+        TreeIndexVec idxs{
+            { 0, 1, -1 },
+            { 1, 2, -1 },
+            { 2, 3, -1 },
+            { 3, 4, -1 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test2", nodes[ 0 ] );
     }
@@ -117,12 +121,15 @@ class Test {
     //                4
     void Test3() {
         ValVec vals{ 8, 7, 6, 5, 4 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, -1, 1 );
-        connectNodesIndex( nodes, 1, -1, 2 );
-        connectNodesIndex( nodes, 2, -1, 3 );
-        connectNodesIndex( nodes, 3, -1, 4 );
+        TreeIndexVec idxs{
+            { 0, -1, 1 },
+            { 1, -1, 2 },
+            { 2, -1, 3 },
+            { 3, -1, 4 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test3", nodes[ 0 ] );
     }
@@ -133,7 +140,7 @@ class Test {
     // 测试只有一个结点的二叉树
     void Test5() {
         ValVec vals{ 8 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
         checkResult( "Test5", nodes[ 0 ] );
     }

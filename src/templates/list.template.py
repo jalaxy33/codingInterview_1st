@@ -1,18 +1,17 @@
-# Definition for a binary tree node.
-# class TreeNode:
+# Definition for singly-linked list.
+# class ListNode:
 #     def __init__(self, x):
 #         self.val = x
-#         self.left = None
-#         self.right = None
+#         self.next = None
 
 import os
 import sys
 
 sys.path.append(os.path.split(sys.path[0])[0])
 
+from Utilities import list_utils
+from Utilities.list_utils import ListNode
 
-from Utilities import binary_tree
-from Utilities.binary_tree import TreeNode
 
 class Solution:
     pass

@@ -10,8 +10,6 @@
 
 using namespace std;
 
-using TreeNode = BinaryTreeNode;
-
 class Solution {
    public:
     vector<vector<int>> pathSum( TreeNode* root, int target ) {
@@ -25,13 +23,13 @@ class Solution {
 
    private:
     vector<vector<int>> intResult;  // 记录最终结果
-    vector<int> path;            // 记录其中一条路径
+    vector<int> path;               // 记录其中一条路径
 
     void recur( TreeNode* root, int target ) {
         if ( !root ) return;
         // 将当前结点加入路径，并更新目标值
-        path.push_back( root->val );  
-        target -= root->val;          
+        path.push_back( root->val );
+        target -= root->val;
         // 成功条件：1) 目标值为0，且 2) 已到达叶节点
         if ( target == 0 && !root->left && !root->right )
             // C++ 中，push_back是复制，无需对动态变化的path特殊处理
@@ -70,10 +68,13 @@ class Test {
     // 有两条路径上的结点和为22
     void Test1() {
         ValVec vals{ 10, 5, 12, 4, 7 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test1", nodes[ 0 ], 22, 2 );
         destroyTree( nodes[ 0 ] );
@@ -87,10 +88,13 @@ class Test {
     // 没有路径上的结点和为15
     void Test2() {
         ValVec vals{ 10, 5, 12, 4, 7 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test2", nodes[ 0 ], 15, 0 );
         destroyTree( nodes[ 0 ] );
@@ -108,12 +112,15 @@ class Test {
     // 有一条路径上面的结点和为15
     void Test3() {
         ValVec vals{ 5, 4, 3, 2, 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, -1 );
-        connectNodesIndex( nodes, 1, 2, -1 );
-        connectNodesIndex( nodes, 2, 3, -1 );
-        connectNodesIndex( nodes, 3, 4, -1 );
+        TreeIndexVec idxs{
+            { 0, 1, -1 },
+            { 1, 2, -1 },
+            { 2, 3, -1 },
+            { 3, 4, -1 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test3", nodes[ 0 ], 15, 1 );
         destroyTree( nodes[ 0 ] );
@@ -131,12 +138,15 @@ class Test {
     // 没有路径上面的结点和为16
     void Test4() {
         ValVec vals{ 1, 2, 3, 4, 5 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, -1, 1 );
-        connectNodesIndex( nodes, 1, -1, 2 );
-        connectNodesIndex( nodes, 2, -1, 3 );
-        connectNodesIndex( nodes, 3, -1, 4 );
+        TreeIndexVec idxs{
+            { 0, -1, 1 },
+            { 1, -1, 2 },
+            { 2, -1, 3 },
+            { 3, -1, 4 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test4", nodes[ 0 ], 16, 0 );
         destroyTree( nodes[ 0 ] );
@@ -145,7 +155,7 @@ class Test {
     // 树中只有1个结点
     void Test5() {
         ValVec vals{ 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
         checkResult( "Test5", nodes[ 0 ], 1, 1 );
         destroyTree( nodes[ 0 ] );

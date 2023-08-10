@@ -13,7 +13,7 @@ sys.path.append(os.path.split(sys.path[0])[0])
 
 
 from Utilities import binary_tree
-from Utilities.binary_tree import BinaryTreeNode as TreeNode
+from Utilities.binary_tree import TreeNode
 
 
 class Solution:
@@ -59,14 +59,17 @@ class Test:
         Avals = [8, 8, 7, 9, 2, 4, 7]
         Bvals = [8, 9, 2]
 
-        Anodes = binary_tree.createNodesVec(Avals)
-        Bnodes = binary_tree.createNodesVec(Bvals)
+        Anodes = binary_tree.createTreeNodesVec(Avals)
+        Bnodes = binary_tree.createTreeNodesVec(Bvals)
 
-        binary_tree.connectNodesIndex(Anodes, 0, 1, 2)
-        binary_tree.connectNodesIndex(Anodes, 1, 3, 4)
-        binary_tree.connectNodesIndex(Anodes, 4, 5, 6)
-
-        binary_tree.connectNodesIndex(Bnodes, 0, 1, 2)
+        Aidxs = [
+            (0, 1, 2),
+            (1, 3, 4),
+            (4, 5, 6),
+        ]
+        Bidxs = [(0, 1, 2)]
+        binary_tree.connectTreeNodesIndexVec(Anodes, Aidxs)
+        binary_tree.connectTreeNodesIndexVec(Bnodes, Bidxs)
 
         self.checkResult("Test1", Anodes[0], Bnodes[0], True)
 
@@ -82,14 +85,17 @@ class Test:
         Avals = [8, 8, 7, 9, 3, 4, 7]
         Bvals = [8, 9, 2]
 
-        Anodes = binary_tree.createNodesVec(Avals)
-        Bnodes = binary_tree.createNodesVec(Bvals)
+        Anodes = binary_tree.createTreeNodesVec(Avals)
+        Bnodes = binary_tree.createTreeNodesVec(Bvals)
 
-        binary_tree.connectNodesIndex(Anodes, 0, 1, 2)
-        binary_tree.connectNodesIndex(Anodes, 1, 3, 4)
-        binary_tree.connectNodesIndex(Anodes, 4, 5, 6)
-
-        binary_tree.connectNodesIndex(Bnodes, 0, 1, 2)
+        Aidxs = [
+            (0, 1, 2),
+            (1, 3, 4),
+            (4, 5, 6),
+        ]
+        Bidxs = [(0, 1, 2)]
+        binary_tree.connectTreeNodesIndexVec(Anodes, Aidxs)
+        binary_tree.connectTreeNodesIndexVec(Bnodes, Bidxs)
 
         self.checkResult("Test2", Anodes[0], Bnodes[0], False)
 
@@ -107,16 +113,21 @@ class Test:
         Avals = [8, 8, 9, 2, 5]
         Bvals = [8, 9, 2]
 
-        Anodes = binary_tree.createNodesVec(Avals)
-        Bnodes = binary_tree.createNodesVec(Bvals)
+        Anodes = binary_tree.createTreeNodesVec(Avals)
+        Bnodes = binary_tree.createTreeNodesVec(Bvals)
 
-        binary_tree.connectNodesIndex(Anodes, 0, 1, -1)
-        binary_tree.connectNodesIndex(Anodes, 1, 2, -1)
-        binary_tree.connectNodesIndex(Anodes, 2, 3, -1)
-        binary_tree.connectNodesIndex(Anodes, 3, 4, -1)
-
-        binary_tree.connectNodesIndex(Bnodes, 0, 1, -1)
-        binary_tree.connectNodesIndex(Bnodes, 1, 2, -1)
+        Aidxs = [
+            (0, 1, -1),
+            (1, 2, -1),
+            (2, 3, -1),
+            (3, 4, -1),
+        ]
+        Bidxs = [
+            (0, 1, -1),
+            (1, 2, -1),
+        ]
+        binary_tree.connectTreeNodesIndexVec(Anodes, Aidxs)
+        binary_tree.connectTreeNodesIndexVec(Bnodes, Bidxs)
 
         self.checkResult("Test3", Anodes[0], Bnodes[0], True)
 
@@ -134,16 +145,21 @@ class Test:
         Avals = [8, 8, 9, 2, 5]
         Bvals = [8, 9, 3]
 
-        Anodes = binary_tree.createNodesVec(Avals)
-        Bnodes = binary_tree.createNodesVec(Bvals)
+        Anodes = binary_tree.createTreeNodesVec(Avals)
+        Bnodes = binary_tree.createTreeNodesVec(Bvals)
 
-        binary_tree.connectNodesIndex(Anodes, 0, 1, -1)
-        binary_tree.connectNodesIndex(Anodes, 1, 2, -1)
-        binary_tree.connectNodesIndex(Anodes, 2, 3, -1)
-        binary_tree.connectNodesIndex(Anodes, 3, 4, -1)
-
-        binary_tree.connectNodesIndex(Bnodes, 0, 1, -1)
-        binary_tree.connectNodesIndex(Bnodes, 1, 2, -1)
+        Aidxs = [
+            (0, 1, -1),
+            (1, 2, -1),
+            (2, 3, -1),
+            (3, 4, -1),
+        ]
+        Bidxs = [
+            (0, 1, -1),
+            (1, 2, -1),
+        ]
+        binary_tree.connectTreeNodesIndexVec(Anodes, Aidxs)
+        binary_tree.connectTreeNodesIndexVec(Bnodes, Bidxs)
 
         self.checkResult("Test4", Anodes[0], Bnodes[0], False)
 
@@ -161,16 +177,21 @@ class Test:
         Avals = [8, 8, 9, 2, 5]
         Bvals = [8, 9, 2]
 
-        Anodes = binary_tree.createNodesVec(Avals)
-        Bnodes = binary_tree.createNodesVec(Bvals)
+        Anodes = binary_tree.createTreeNodesVec(Avals)
+        Bnodes = binary_tree.createTreeNodesVec(Bvals)
 
-        binary_tree.connectNodesIndex(Anodes, 0, -1, 1)
-        binary_tree.connectNodesIndex(Anodes, 1, -1, 2)
-        binary_tree.connectNodesIndex(Anodes, 2, -1, 3)
-        binary_tree.connectNodesIndex(Anodes, 3, -1, 4)
-
-        binary_tree.connectNodesIndex(Bnodes, 0, -1, 1)
-        binary_tree.connectNodesIndex(Bnodes, 1, -1, 2)
+        Aidxs = [
+            (0, -1, 1),
+            (1, -1, 2),
+            (2, -1, 3),
+            (3, -1, 4),
+        ]
+        Bidxs = [
+            (0, -1, 1),
+            (1, -1, 2),
+        ]
+        binary_tree.connectTreeNodesIndexVec(Anodes, Aidxs)
+        binary_tree.connectTreeNodesIndexVec(Bnodes, Bidxs)
 
         self.checkResult("Test5", Anodes[0], Bnodes[0], True)
 
@@ -188,38 +209,49 @@ class Test:
         Avals = [8, 8, 9, 2, 5]
         Bvals = [8, 9, 3, 2]
 
-        Anodes = binary_tree.createNodesVec(Avals)
-        Bnodes = binary_tree.createNodesVec(Bvals)
+        Anodes = binary_tree.createTreeNodesVec(Avals)
+        Bnodes = binary_tree.createTreeNodesVec(Bvals)
 
-        binary_tree.connectNodesIndex(Anodes, 0, -1, 1)
-        binary_tree.connectNodesIndex(Anodes, 1, -1, 2)
-        binary_tree.connectNodesIndex(Anodes, 2, -1, 3)
-        binary_tree.connectNodesIndex(Anodes, 3, -1, 4)
-
-        binary_tree.connectNodesIndex(Bnodes, 0, -1, 1)
-        binary_tree.connectNodesIndex(Bnodes, 1, 2, 3)
+        Aidxs = [
+            (0, -1, 1),
+            (1, -1, 2),
+            (2, -1, 3),
+            (3, -1, 4),
+        ]
+        Bidxs = [
+            (0, -1, 1),
+            (1, 2, 3),
+        ]
+        binary_tree.connectTreeNodesIndexVec(Anodes, Aidxs)
+        binary_tree.connectTreeNodesIndexVec(Bnodes, Bidxs)
 
         self.checkResult("Test6", Anodes[0], Bnodes[0], False)
 
     # 树A为空树
     def Test7(self):
         Bvals = [8, 9, 3, 2]
-        Bnodes = binary_tree.createNodesVec(Bvals)
+        Bnodes = binary_tree.createTreeNodesVec(Bvals)
 
-        binary_tree.connectNodesIndex(Bnodes, 0, -1, 1)
-        binary_tree.connectNodesIndex(Bnodes, 1, 2, 3)
+        Bidxs = [
+            (0, -1, 1),
+            (1, 2, 3),
+        ]
+        binary_tree.connectTreeNodesIndexVec(Bnodes, Bidxs)
 
         self.checkResult("Test7", None, Bnodes[0], False)
 
     # 树B为空树
     def Test8(self):
         Avals = [8, 8, 9, 2, 5]
-        Anodes = binary_tree.createNodesVec(Avals)
+        Anodes = binary_tree.createTreeNodesVec(Avals)
 
-        binary_tree.connectNodesIndex(Anodes, 0, -1, 1)
-        binary_tree.connectNodesIndex(Anodes, 1, -1, 2)
-        binary_tree.connectNodesIndex(Anodes, 2, -1, 3)
-        binary_tree.connectNodesIndex(Anodes, 3, -1, 4)
+        Aidxs = [
+            (0, -1, 1),
+            (1, -1, 2),
+            (2, -1, 3),
+            (3, -1, 4),
+        ]
+        binary_tree.connectTreeNodesIndexVec(Anodes, Aidxs)
 
         self.checkResult("Test8", Anodes[0], None, False)
 

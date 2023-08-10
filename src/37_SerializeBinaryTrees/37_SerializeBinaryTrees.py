@@ -12,7 +12,7 @@ sys.path.append(os.path.split(sys.path[0])[0])
 
 
 from Utilities import binary_tree
-from Utilities.binary_tree import BinaryTreeNode as TreeNode
+from Utilities.binary_tree import TreeNode
 
 
 class Codec:
@@ -95,11 +95,14 @@ class Test:
         data = "[8,6,10,5,7,9,11,null,null,null,null,null,null,null,null]"
 
         vals = [8, 6, 10, 5, 7, 9, 11]
-        nodes = binary_tree.createNodesVec(vals)
+        nodes = binary_tree.createTreeNodesVec(vals)
 
-        binary_tree.connectNodesIndex(nodes, 0, 1, 2)
-        binary_tree.connectNodesIndex(nodes, 1, 3, 4)
-        binary_tree.connectNodesIndex(nodes, 2, 5, 6)
+        idxs = [
+            (0, 1, 2),
+            (1, 3, 4),
+            (2, 5, 6),
+        ]
+        binary_tree.connectTreeNodesIndexVec(nodes, idxs)
 
         self.checkResult("Test1", nodes[0], data)
 
@@ -111,11 +114,14 @@ class Test:
         data = "[5,4,null,3,null,2,null,null,null]"
 
         vals = [5, 4, 3, 2]
-        nodes = binary_tree.createNodesVec(vals)
+        nodes = binary_tree.createTreeNodesVec(vals)
 
-        binary_tree.connectNodesIndex(nodes, 0, 1, -1)
-        binary_tree.connectNodesIndex(nodes, 1, 2, -1)
-        binary_tree.connectNodesIndex(nodes, 2, 3, -1)
+        idxs = [
+            (0, 1, -1),
+            (1, 2, -1),
+            (2, 3, -1),
+        ]
+        binary_tree.connectTreeNodesIndexVec(nodes, idxs)
 
         self.checkResult("Test2", nodes[0], data)
 
@@ -127,11 +133,14 @@ class Test:
         data = "[5,null,4,null,3,null,2,null,null]"
 
         vals = [5, 4, 3, 2]
-        nodes = binary_tree.createNodesVec(vals)
+        nodes = binary_tree.createTreeNodesVec(vals)
 
-        binary_tree.connectNodesIndex(nodes, 0, -1, 1)
-        binary_tree.connectNodesIndex(nodes, 1, -1, 2)
-        binary_tree.connectNodesIndex(nodes, 2, -1, 3)
+        idxs = [
+            (0, -1, 1),
+            (1, -1, 2),
+            (2, -1, 3),
+        ]
+        binary_tree.connectTreeNodesIndexVec(nodes, idxs)
 
         self.checkResult("Test3", nodes[0], data)
 
@@ -146,16 +155,19 @@ class Test:
         data = "[5,null,5,null,5,5,null,5,null,5,5,5,null,null,5,null,null,null,null]"
 
         vals = [5, 5, 5, 5, 5, 5, 5, 5, 5]
-        nodes = binary_tree.createNodesVec(vals)
+        nodes = binary_tree.createTreeNodesVec(vals)
 
-        binary_tree.connectNodesIndex(nodes, 0, -1, 1)
-        binary_tree.connectNodesIndex(nodes, 1, -1, 2)
-        binary_tree.connectNodesIndex(nodes, 2, 3, -1)
-        binary_tree.connectNodesIndex(nodes, 2, 3, -1)
-        binary_tree.connectNodesIndex(nodes, 3, 4, -1)
-        binary_tree.connectNodesIndex(nodes, 4, 5, 6)
-        binary_tree.connectNodesIndex(nodes, 5, 7, -1)
-        binary_tree.connectNodesIndex(nodes, 6, -1, 8)
+        idxs = [
+            (0, -1, 1),
+            (1, -1, 2),
+            (2, 3, -1),
+            (2, 3, -1),
+            (3, 4, -1),
+            (4, 5, 6),
+            (5, 7, -1),
+            (6, -1, 8),
+        ]
+        binary_tree.connectTreeNodesIndexVec(nodes, idxs)
 
         self.checkResult("Test4", nodes[0], data)
 
@@ -164,7 +176,7 @@ class Test:
         data = "[1,null,null]"
 
         vals = [1]
-        nodes = binary_tree.createNodesVec(vals)
+        nodes = binary_tree.createTreeNodesVec(vals)
 
         self.checkResult("Test5", nodes[0], data)
 

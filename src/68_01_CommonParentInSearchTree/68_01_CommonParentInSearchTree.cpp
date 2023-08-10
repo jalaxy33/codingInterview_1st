@@ -20,8 +20,6 @@
 
 using namespace std;
 
-using TreeNode = BinaryTreeNode;
-
 class Solution {
    public:
     // 如果p和q在root两侧，那么root就是它们的共同祖先
@@ -83,12 +81,15 @@ class Test {
     // p=0, q=5, expected=2
     void Test1() {
         ValVec vals{ 6, 2, 8, 0, 4, 7, 9, 3, 5 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
-        connectNodesIndex( nodes, 2, 5, 6 );
-        connectNodesIndex( nodes, 4, 7, 8 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 2, 5, 6 },
+            { 4, 7, 8 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test1", nodes[ 0 ], nodes[ 3 ], nodes[ 8 ], nodes[ 1 ] );
         destroyTree( nodes[ 0 ] );
@@ -106,12 +107,15 @@ class Test {
     // p=1, q=3, expected=4
     void Test2() {
         ValVec vals{ 5, 4, 3, 2, 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, -1 );
-        connectNodesIndex( nodes, 1, 2, -1 );
-        connectNodesIndex( nodes, 2, 3, -1 );
-        connectNodesIndex( nodes, 3, 4, -1 );
+        TreeIndexVec idxs{
+            { 0, 1, -1 },
+            { 1, 2, -1 },
+            { 2, 3, -1 },
+            { 3, 4, -1 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test2", nodes[ 0 ], nodes[ 4 ], nodes[ 2 ], nodes[ 2 ] );
         destroyTree( nodes[ 0 ] );

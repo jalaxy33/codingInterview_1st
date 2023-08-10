@@ -22,8 +22,6 @@
 
 using namespace std;
 
-using TreeNode = BinaryTreeNode;
-
 class Solution {
    public:
     bool isBalanced( TreeNode* root ) {
@@ -67,11 +65,14 @@ class Test {
     //      4  5     6   7
     void Test1() {
         ValVec vals{ 1, 2, 3, 4, 5, 6, 7 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
-        connectNodesIndex( nodes, 2, 5, 6 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 2, 5, 6 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test1", nodes[ 0 ], true );
         destroyTree( nodes[ 0 ] );
@@ -87,12 +88,15 @@ class Test {
     //       7
     void Test2() {
         ValVec vals{ 1, 2, 3, 4, 5, 6, 7 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
-        connectNodesIndex( nodes, 2, -1, 5 );
-        connectNodesIndex( nodes, 4, 6, -1 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 2, -1, 5 },
+            { 4, 6, -1 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test2", nodes[ 0 ], true );
         destroyTree( nodes[ 0 ] );
@@ -108,11 +112,14 @@ class Test {
     //       6
     void Test3() {
         ValVec vals{ 1, 2, 3, 4, 5, 6 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, 2 );
-        connectNodesIndex( nodes, 1, 3, 4 );
-        connectNodesIndex( nodes, 4, 5, -1 );
+        TreeIndexVec idxs{
+            { 0, 1, 2 },
+            { 1, 3, 4 },
+            { 4, 5, -1 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test3", nodes[ 0 ], false );
         destroyTree( nodes[ 0 ] );
@@ -129,12 +136,15 @@ class Test {
     //       5
     void Test4() {
         ValVec vals{ 1, 2, 3, 4, 5 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, 1, -1 );
-        connectNodesIndex( nodes, 1, 2, -1 );
-        connectNodesIndex( nodes, 2, 3, -1 );
-        connectNodesIndex( nodes, 3, 4, -1 );
+        TreeIndexVec idxs{
+            { 0, 1, -1 },
+            { 1, 2, -1 },
+            { 2, 3, -1 },
+            { 3, 4, -1 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test4", nodes[ 0 ], false );
         destroyTree( nodes[ 0 ] );
@@ -151,12 +161,15 @@ class Test {
     //         5
     void Test5() {
         ValVec vals{ 1, 2, 3, 4, 5 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
-        connectNodesIndex( nodes, 0, -1, 1 );
-        connectNodesIndex( nodes, 1, -1, 2 );
-        connectNodesIndex( nodes, 2, -1, 3 );
-        connectNodesIndex( nodes, 3, -1, 4 );
+        TreeIndexVec idxs{
+            { 0, -1, 1 },
+            { 1, -1, 2 },
+            { 2, -1, 3 },
+            { 3, -1, 4 },
+        };
+        connectTreeNodesIndexVec( nodes, idxs );
 
         checkResult( "Test5", nodes[ 0 ], false );
         destroyTree( nodes[ 0 ] );
@@ -165,7 +178,7 @@ class Test {
     // 树中只有1个结点
     void Test6() {
         ValVec vals{ 1 };
-        NodeVec nodes = createNodesVec( vals );
+        TreeNodeVec nodes = createTreeNodesVec( vals );
 
         checkResult( "Test6", nodes[ 0 ], true );
         destroyTree( nodes[ 0 ] );

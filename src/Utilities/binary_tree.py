@@ -1,26 +1,29 @@
-class BinaryTreeNode:
+from typing import Tuple
+
+TreeIndex = Tuple[int, int, int]
+
+
+class TreeNode:
     def __init__(self, x):
         self.val = x
-        self.left: BinaryTreeNode = None
-        self.right: BinaryTreeNode = None
+        self.left: TreeNode = None
+        self.right: TreeNode = None
 
 
 # ==== single-node funcs ====
 
 
-def createBinaryTreeNode(value) -> BinaryTreeNode:
-    return BinaryTreeNode(value)
+def createBinaryTreeNode(value) -> TreeNode:
+    return TreeNode(value)
 
 
-def connectTreeNodes(
-    parent: BinaryTreeNode, left: BinaryTreeNode, right: BinaryTreeNode
-) -> None:
+def connectTreeNodes(parent: TreeNode, left: TreeNode, right: TreeNode) -> None:
     if parent:
         parent.left = left
         parent.right = right
 
 
-def printTreeNode(node: BinaryTreeNode) -> None:
+def printTreeNode(node: TreeNode) -> None:
     if node:
         print(f"value of this node is: {node.val}.")
 
@@ -38,7 +41,7 @@ def printTreeNode(node: BinaryTreeNode) -> None:
     print("\n")
 
 
-def printTree(root: BinaryTreeNode) -> None:
+def printTree(root: TreeNode) -> None:
     printTreeNode(root)
     if root:
         if root.left:
@@ -50,16 +53,22 @@ def printTree(root: BinaryTreeNode) -> None:
 # ==== multi-node funcs ====
 
 
-def createNodesVec(vals: list[int]) -> list[BinaryTreeNode]:
+def createTreeNodesVec(vals: list[int]) -> list[TreeNode]:
     nodes = []
     for i in range(len(vals)):
         nodes.append(createBinaryTreeNode(vals[i]))
     return nodes
 
 
-def connectNodesIndex(
-    nodes: list[BinaryTreeNode], parent_i: int, left_i: int = -1, right_i: int = -1
+def connectTreeNodesIndex(
+    nodes: list[TreeNode], parent_i: int, left_i: int = -1, right_i: int = -1
 ) -> None:
     left = nodes[left_i] if left_i != -1 else None
     right = nodes[right_i] if right_i != -1 else None
     connectTreeNodes(nodes[parent_i], left, right)
+
+
+def connectTreeNodesIndexVec(nodes: list[TreeNode], indexes: list[TreeIndex]):
+    for idxs in indexes:
+        parent_i, left_i, right_i = idxs
+        connectTreeNodesIndex(nodes, parent_i, left_i, right_i)

@@ -515,6 +515,41 @@ target("58_01_ReverseWordsInSentence")
     set_filename("out")
 
 
+-- 08. 位运算
+
+target("15_NumberOf1InBinary")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/15_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("56_01_NumbersAppearOnce")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/56_01_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("56_02_NumberAppearingOnce")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/56_02_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("65_AddTwoNumbers")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/65_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --

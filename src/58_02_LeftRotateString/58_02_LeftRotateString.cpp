@@ -77,10 +77,10 @@ class Test {
     }
 
     // 鲁棒性测试
-    void Test4() { checkResult( "Test4", "", 6, "" ); }
+    void Test3() { checkResult( "Test4", "", 6, "" ); }
 
     // 鲁棒性测试
-    void Test5() {
+    void Test4() {
         string input = "abcdefg";
         string expected = "abcdefg";
 
@@ -99,8 +99,8 @@ class Test {
         Test1();
         Test2();
         Test3();
+        Test3();
         Test4();
-        Test5();
         Test6();
     }
 

@@ -96,3 +96,9 @@ void connectListNodesVec( ListNodeVec &nodes ) {
     for ( int i = 0; i < nodes.size() - 1; i++ )
         connectListNodes( nodes[ i ], nodes[ i + 1 ] );
 }
+
+void destoryListNodesVec( ListNodeVec &nodes ) {
+    for ( ListNode *node : nodes ) {
+        if ( node ) delete node;
+    }
+}

@@ -467,6 +467,53 @@ target("18_DeleteNodeInList")
     set_filename("out")
 
 
+target("21_ReorderArray")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/21_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("22_KthNodeFromEnd")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/22_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("25_MergeSortedLists")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/25_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("52_FirstCommonNodesInLists")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/52_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("57_TwoNumbersWithSum")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/57_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("58_01_ReverseWordsInSentence")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/58_01_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io

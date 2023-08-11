@@ -24,5 +24,5 @@ void removeNode( ListNode **pHead, int value );
 // multi-node
 ListNodeVec createListNodesVec(const ValVec& vals);
 void connectListNodesVec(ListNodeVec& nodes);
-
+void destoryListNodesVec(ListNodeVec& nodes);
 

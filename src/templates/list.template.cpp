@@ -14,10 +14,7 @@
 
 using namespace std;
 
-class Solution {
-   public:
-    ListNode* deleteNode( ListNode* head, int val ) {}
-};
+class Solution {};
 
 class Test {
    public:

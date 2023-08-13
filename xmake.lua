@@ -499,10 +499,10 @@ target("52_FirstCommonNodesInLists")
     set_filename("out")
 
 
-target("57_TwoNumbersWithSum")
+target("57_01_TwoNumbersWithSum")
     set_kind("binary")
     add_deps("utils")
-    add_files("src/57_*/*.cpp")
+    add_files("src/57_01_*/*.cpp")
     set_default(false)
     set_filename("out")
 
@@ -545,6 +545,72 @@ target("65_AddTwoNumbers")
     set_kind("binary")
     add_deps("utils")
     add_files("src/65_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+-- 09. 数学
+
+target("14_01_CuttingRope")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/14_01_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("14_02_CuttingRope")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/14_02_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("39_MoreThanHalfNumber")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/39_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("43_NumberOf1")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/43_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("44_DigitsInSequence")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/44_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("57_02_ContinuousSquenceWithSum")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/57_02_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("62_LastNumberInCircle")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/62_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+target("66_ConstuctArray")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/66_*/*.cpp")
     set_default(false)
     set_filename("out")
 

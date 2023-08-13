@@ -90,7 +90,7 @@ class Test {
     }
 
     // 鲁棒性测试
-    void Test3() {
+    void Test4() {
         vector<int> nums;
         checkResult( "Test4", nums, 0, false );
     }
@@ -99,7 +99,7 @@ class Test {
         Test1();
         Test2();
         Test3();
-        Test3();
+        Test4();
     }
 
    private:

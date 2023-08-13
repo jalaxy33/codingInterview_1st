@@ -615,6 +615,24 @@ target("66_ConstuctArray")
     set_filename("out")
 
 
+-- 10. 模拟
+
+target("29_PrintMatrix")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/29_*/*.cpp")
+    set_filename("out")
+
+
+target("31_StackPushPopOrder")
+    set_kind("binary")
+    add_deps("utils")
+    add_files("src/31_*/*.cpp")
+    set_default(false)
+    set_filename("out")
+
+
+
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
